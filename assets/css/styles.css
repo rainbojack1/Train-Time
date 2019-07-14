@@ -1,9 +1,16 @@
 /* #007bff */
-form{
+
+table, form {
     border: 1px solid #007bff;
     padding: 10px;
 }
 
-.form-group .header{
+.section-head {
     background-color: #007bff;
+    padding: 5px;
+    width: 100%;
+}
+
+.spacing {
+    margin-bottom: 20px;
 }
