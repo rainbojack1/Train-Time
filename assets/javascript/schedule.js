@@ -58,6 +58,7 @@ database.ref().on("child_added", function(snap){
     console.log("freguency: ", value.freq);
 
     do {
+        //must let moment know what format the incoming data is in to prevent invalid date error, e.g. moment(nextTrain, 'hh:mm A') says I'm using the value of nextTrain and it is in the format of hh:mm A
         nextTrain = moment(nextTrain, 'hh:mm A').add(value.freq, 'minutes').format('hh:mm A');
         // console.log("Next train arrives: ", nextTrain);
 
