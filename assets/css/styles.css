@@ -5,6 +5,10 @@ table, form {
     padding: 10px;
 }
 
+thead {
+    font-weight: bold;
+}
+
 .section-head {
     background-color: #007bff;
     padding: 5px;
