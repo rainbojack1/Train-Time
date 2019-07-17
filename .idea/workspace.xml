@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e26131a9-0d6a-4548-bcc7-85feebe0ee6a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/javascript/schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/javascript/schedule.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/javascript/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="73" lean-forward="true" selection-end-line="73" />
+            <state relative-caret-position="494">
+              <caret line="73" column="132" selection-start-line="73" selection-start-column="132" selection-end-line="73" selection-end-column="132" />
             </state>
           </provider>
         </entry>
@@ -200,16 +199,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563203097650</updated>
-      <workItem from="1563203099146" duration="11775000" />
+      <workItem from="1563203099146" duration="12650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11775000" />
+    <option name="totallyTimeSpent" value="12650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-173" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" side_tool="true" />
       <window_info content_ui="combo" id="Project" visible="true" weight="0.16487648" />
@@ -257,8 +255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascript/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="73" lean-forward="true" selection-end-line="73" />
+        <state relative-caret-position="494">
+          <caret line="73" column="132" selection-start-line="73" selection-start-column="132" selection-end-line="73" selection-end-column="132" />
         </state>
       </provider>
     </entry>

@@ -71,5 +71,5 @@ database.ref().on("child_added", function(snap){
 
     //add logic to calculate how long before the train arrives based on next train - current time, maybe use setInterval
 
-    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + "1" + "</td><td>" + "2" + "</td></tr>");
+    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + nextTrain + "</td><td>" + "2" + "</td></tr>");
   });
