@@ -56,6 +56,8 @@ database.ref().on("child_added", function(snap){
     nextTrain = value.firstTrain;
     console.log("Next train: ", nextTrain);
     console.log("freguency: ", value.freq);
+    let current = moment().format('hh:mm A');
+    console.log("Current: ", current);
 
     do {
         //must let moment know what format the incoming data is in to prevent invalid date error, e.g. moment(nextTrain, 'hh:mm A') says I'm using the value of nextTrain and it is in the format of hh:mm A
@@ -63,8 +65,9 @@ database.ref().on("child_added", function(snap){
         // console.log("Next train arrives: ", nextTrain);
 
     }
-    while(moment(value.dateAdded).format('hh:mm A') > nextTrain);
+    while(current > nextTrain);
     console.log("Next train arrives (after while loop): ", nextTrain);
+    //maybe this needs to be compared to the current time instead of dateAdded - moment(value.dateAdded).format('hh:mm A')
 
     //add logic to calculate how long before the train arrives based on next train - current time, maybe use setInterval
 
