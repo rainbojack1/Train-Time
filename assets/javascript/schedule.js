@@ -70,6 +70,11 @@ database.ref().on("child_added", function(snap){
     //maybe this needs to be compared to the current time instead of dateAdded - moment(value.dateAdded).format('hh:mm A')
 
     //add logic to calculate how long before the train arrives based on next train - current time, maybe use setInterval
+    /*setInterval(function(){
+        console.log("Min Away: ", moment(nextTrain, 'hh:mm A').fromNow(true));
+        }, 1000 * 30);*/
+    console.log("Min Away: ", moment(nextTrain, 'hh:mm A').fromNow(true));
+    minAway = moment(nextTrain, 'hh:mm A').fromNow(true);
 
-    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + nextTrain + "</td><td>" + "2" + "</td></tr>");
+    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + nextTrain + "</td><td>" + minAway + "</td></tr>");
   });
