@@ -53,18 +53,27 @@ database.ref().on("child_added", function(snap){
     console.log("name: ", value.name);
 
     //add logic to calculate next train based on firstTrain + frequency
-    nextTrain = value.firstTrain;
+    nextTrain = moment(value.firstTrain, 'hh:mm A').format('hh:mm A');
     console.log("Next train: ", nextTrain);
     console.log("freguency: ", value.freq);
+    console.log("Current time: ", moment().format('hh:mm A'));
 
+    let currentTime =  moment().format('hh:mm A');
+    
     do {
         //must let moment know what format the incoming data is in to prevent invalid date error, e.g. moment(nextTrain, 'hh:mm A') says I'm using the value of nextTrain and it is in the format of hh:mm A
         nextTrain = moment(nextTrain, 'hh:mm A').add(value.freq, 'minutes').format('hh:mm A');
-        // console.log("Next train arrives: ", nextTrain);
-
+        console.log("Next train arrives: ", nextTrain);
+        console.log(currentTime > (nextTrain));
+        console.log(currentTime < (nextTrain));
+        //console.log("dateAdded: ", moment(value.dateAdded).format('hh:mm A'));
+        console.log("moment diff: ", (currentTime.diff(nextTrain, "minutes")));
     }
-    while(moment(value.dateAdded).format('hh:mm A') > nextTrain);
+    //while(moment(value.dateAdded).format('hh:mm A') > nextTrain);
+    while( currentTime < nextTrain);
+    
     console.log("Next train arrives (after while loop): ", nextTrain);
+
 
     //add logic to calculate how long before the train arrives based on next train - current time, maybe use setInterval
 
