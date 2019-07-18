@@ -19,13 +19,9 @@ $("#submit").click(function(event){
     let name = $("#inputName").val().trim();
     let destination = $('#inputDestination').val().trim();
     let freq = parseInt($('#inputFrequency').val().trim());
-    let firstTrain = $("#inputFirstTrain").val().trim();
-    let nextTrain;
-    let arrive;
-    let minAway;
-    
+    let firstTrain = moment($("#inputFirstTrain").val().trim()).format('hh:mm A');
+
     console.log("firstTrain: ", firstTrain);
-    //console.log("Plus 30 min: ", moment(firstTrain, 'hh:mm A').add(30, "minutes").format('hh:mm A'));
 
     let newTrain = {
         name: name,
@@ -51,31 +47,42 @@ database.ref().on("child_added", function(snap){
     let value = snap.val();
     console.log("value: ", value);
     console.log("name: ", value.name);
-
-    //add logic to calculate next train based on firstTrain + frequency
-    nextTrain = moment(value.firstTrain, 'hh:mm A').format('hh:mm A');
-    console.log("Next train: ", nextTrain);
+    console.log("firstTrain: ", value.firstTrain);
     console.log("freguency: ", value.freq);
     console.log("Current time: ", moment().format('hh:mm A'));
 
-    let currentTime =  moment().format('hh:mm A');
-    
-    do {
-        //must let moment know what format the incoming data is in to prevent invalid date error, e.g. moment(nextTrain, 'hh:mm A') says I'm using the value of nextTrain and it is in the format of hh:mm A
-        nextTrain = moment(nextTrain, 'hh:mm A').add(value.freq, 'minutes').format('hh:mm A');
-        console.log("Next train arrives: ", nextTrain);
-        console.log(currentTime > (nextTrain));
-        console.log(currentTime < (nextTrain));
-        //console.log("dateAdded: ", moment(value.dateAdded).format('hh:mm A'));
-        console.log("moment diff: ", (currentTime.diff(nextTrain, "minutes")));
-    }
-    //while(moment(value.dateAdded).format('hh:mm A') > nextTrain);
-    while( currentTime < nextTrain);
-    
-    console.log("Next train arrives (after while loop): ", nextTrain);
+    let current = moment().format('hh:mm A');
+    console.log("Current: ", current);
+
+    /*//add logic to calculate next train based on firstTrain + frequency
+    nextTrain = moment(value.firstTrain, 'hh:mm A').format('hh:mm A');
+    console.log("Next train: ", nextTrain);*/
+
+    // Difference between the times
+    let diffTime = moment().diff(moment(value.firstTrain, 'hh:mm A'), 'minutes');
+    console.log("Time difference: " + diffTime);
+
+    // Time apart remainder
+    let remainder = diffTime % value.freq;
+    console.log("Remainder: ", remainder);
+
+    // Minutes until train arrives
+    let minAway = value.freq - remainder;
+    console.log("Min Away: " + minAway);
+
+    // Time of next train
+    let arrive = moment().add(minAway, 'minutes').format('hh:mm A');
+    console.log("Next train arrives: ", (arrive));
 
 
-    //add logic to calculate how long before the train arrives based on next train - current time, maybe use setInterval
 
-    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + "1" + "</td><td>" + "2" + "</td></tr>");
+
+
+
+    $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.destination + "</td><td>" + value.freq + "</td><td>" + arrive + "</td><td id='away'>" + minAway + "</td></tr>");
+
+
+
   });
+
+
