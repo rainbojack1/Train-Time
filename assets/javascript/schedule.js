@@ -19,7 +19,7 @@ $("#submit").click(function(event){
     let name = $("#inputName").val().trim();
     let destination = $('#inputDestination').val().trim();
     let freq = parseInt($('#inputFrequency').val().trim());
-    let firstTrain = moment($("#inputFirstTrain").val().trim()).format('hh:mm A');
+    let firstTrain = $("#inputFirstTrain").val().trim();
 
     console.log("firstTrain: ", firstTrain);
 
@@ -53,6 +53,9 @@ database.ref().on("child_added", function(snap){
 
     let current = moment().format('hh:mm A');
     console.log("Current: ", current);
+
+    let lstTrain = moment(value.firstTrain, 'hh:mm A').format('hh:mm A');
+    console.log("lstTrain", lstTrain);
 
     /*//add logic to calculate next train based on firstTrain + frequency
     nextTrain = moment(value.firstTrain, 'hh:mm A').format('hh:mm A');
